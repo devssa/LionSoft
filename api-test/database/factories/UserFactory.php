@@ -17,10 +17,10 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => 'Felipe Martins',
-        'email' => 'felipe@lionsoft.com.br',
+        'name' => 'Admin',
+        'email' => 'admin@admin.com',
         'email_verified_at' => now(),
-        'cpf' => '123.456.789-78',
+        'cpf' => '123.456.789-79',
         'perfil' => 'Administrador',
         'status' => 1,
         'password' => bcrypt('123456'), // password
