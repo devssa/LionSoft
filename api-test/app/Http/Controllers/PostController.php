@@ -153,9 +153,9 @@ class PostController extends Controller
             }
             if (auth()->user()->status == 1) { //Operação permitida somente após administrador liberar.
                 $dados = $request->all();
-                $check_post = Post::where('titulo', $dados['titulo'])->get()->first();
+                $check_post = Post::where(['titulo' => $request['titulo'], 'user_id' => auth()->user()->id])->get()->first();
 
-                if (!($check_post['titulo'] == $dados['titulo'] && $check_post['id'] != $id && $check_post['user_id'] == auth()->user()->id)) { // Verifica se o titulo esta duplicado, liberando apenas se for titulo proprio.
+                if (!($check_post['titulo'] == $dados['titulo'] && $check_post['id'] != $id)) { // Verifica se o titulo esta duplicado, liberando apenas se for titulo proprio.
                     $post = Post::select()->where('id', $id)->where('user_id', auth()->user()->id)->get()->first();
                     if ($post) {
                         $post->update([
