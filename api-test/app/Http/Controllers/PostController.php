@@ -66,8 +66,8 @@ class PostController extends Controller
                 return response()->json(['message' => $validator->errors()], Response::HTTP_BAD_REQUEST);
             }
             if (auth()->user()->status == 1) { //Operação permitida somente após administrador liberar.
-                $check_post = Post::where('titulo', $request['titulo'])->get()->first();
-                if (!($check_post && $check_post['user_id'] == auth()->user()->id)) { //Verifica se titulo não esta duplicado
+                $check_post = Post::where(['titulo' => $request['titulo'], 'user_id' => auth()->user()->id])->get()->first();
+                if (!($check_post)) { //Verifica se titulo não esta duplicado
 
                     $post = Post::create([
                         'titulo' => $request['titulo'],
