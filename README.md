@@ -30,7 +30,7 @@ Depois execute o seguinte comando para obter o client_id e client_secret da sua 
 php artisan passport:client --password
 ```
 
-Salve os dados gerados no arquivo clients.txt no diretório api-test, vamos precisar para realizar as autenticações.
+Salve os dados gerados no arquivo clients no diretório api-test, vamos precisar para realizar as autenticações.
 
 Para testar a aplicação, execute:
 ```
